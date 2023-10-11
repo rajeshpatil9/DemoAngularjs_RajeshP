@@ -4,22 +4,23 @@
     <script src="~/Scripts/jquery-3.7.1.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/AngularController/HomeAngular.js"></script>
-    <link href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+    @*<link href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />*@
 
+
+   
 </head>
 <body>
     <div ng-app="HomeApp" ng-controller="HomeController">
         <div class="container">
             <br />
-            <table id="userDetails" class="table table-bordered">
+            <table id="userDetails" class="table table-bordered dtable">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Experience</th>
-                        <th></th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,8 +29,8 @@
                         <td>{{e.Name}}</td>
                         <td>{{e.Email}}</td>
                         <td>{{e.Experience}}</td>
-                        <td><a class="glyphicon glyphicon-pencil" href="/Home/Update_Details?id={{e.Id}}"></a></td>
-                        <td><a class="glyphicon glyphicon-trash" ng-click="deleterecord(e.Id)"></a></td>
+                        <td><a class="glyphicon glyphicon-pencil" href="/Home/Update_Details?id={{e.Id}}"></a> &nbsp;&nbsp; &nbsp; &nbsp; 
+                        <a class="glyphicon glyphicon-trash" ng-click="deleterecord(e.Id)"></a></td>
                     </tr>
                 </tbody>
 
@@ -38,7 +39,20 @@
     </div>
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script>
-        new DataTable('#userDetails');
+        //new DataTable('#userDetails');
+
+        //$(".userDetails").DataTable({
+        //    aaSorting: [[2, 'asc']],
+        //    bPaginate: false,
+        //    bFilter: false,
+        //    bInfo: false,
+        //    bSortable: true,
+        //    bRetrieve: true
+        //});
+
+        //var table = $('#userDetails').DataTable();
+
+        //new DataTable.Responsive(table);
     </script>
 </body>
 </html>

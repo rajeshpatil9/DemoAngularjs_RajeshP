@@ -117,19 +117,29 @@ app.controller("HomeController", function ($scope, $http) {
     };
 
     // Show User list
-    $scope.GetAllDetails = $http.get('/Home/Get_Details').then(function (d){
+    $scope.GetAllDetails = $http.get('/Home/Get_Details').then(function (d) {
         $scope.Regdata = d.data;
-
-    },function(error) {
+        angular.element(document).ready(function () {
+            dTable = $('#userDetails')
+            dTable.DataTable({
+               'aaSorting': [[0, 'desc']],
+                'aoColumnDefs': [{
+                    'bSortable': false,
+                    'aTargets': [-1], /* 1st one, start by the right */
+                    "bVisible": false, "aTargets": [0]
+                }]
+            });
+        });
+    }, function (error) {
         alert("Failed");
     });
 
     $scope.GetById = function (id) {
-        $http.get('/Home/Get_DetailsById?id='+id).then(function (d) {
+        $http.get('/Home/Get_DetailsById?id=' + id).then(function (d) {
             $scope.Records = d.data[0];
         }, function (error) {
             alert("Load failed");
-        
+
         });
     };
 

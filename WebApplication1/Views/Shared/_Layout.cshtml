@@ -6,8 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link type="text/css"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link type="text/css" src="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap.min.css" />
+    @*<link type="text/css"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link type="text/css" src="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap.min.css" />*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -29,7 +31,7 @@
             </div>
         </div>
     </div>
-    <div >
+    <div>
         @RenderBody()
         <hr />
         <footer>
@@ -41,6 +43,8 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
 </body>
 </html>

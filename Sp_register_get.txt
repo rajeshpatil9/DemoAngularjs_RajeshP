@@ -14,7 +14,7 @@ as
 
 begin
 
-Select * from Records
+Select * from Records order by Id desc 
 
 End
 GO
