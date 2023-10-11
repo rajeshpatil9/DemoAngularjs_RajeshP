@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/AngularController/HomeAngular.js"></script>
+    <script type="text/javascript">
+        function refreshCaptcha() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.response, typeof this.response);
+                    var img = document.getElementById('img');
+                    var url = window.URL || window.webkitURL;
+                    img.src = url.createObjectURL(this.response);
+                }
+            }
+            xhr.open('GET', '/TfAccount/ReGenerateCaptcha');
+            xhr.responseType = 'blob';
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <div ng-app="HomeApp" ng-controller="HomeController">
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" ng-model="Records.Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="text" ng-model="Records.Email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Experience:</label>
+                    <input type="text" ng-model="Records.Experience" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Captcha:</label>
+                    <input type="text" ng-model="Records.CaptchaText" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <img id="img" src="@Url.Action("GenerateCaptcha")" class="captchaCL" />
+                    <button type="button" onclick="refreshCaptcha();" class="refresh-btn"><i class="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
+                </div>
+                <div class="form-group">
+                    <input type="button" ng-click="savedata()" class="btn btn-primary" value="{{btntext}}" />
+                    <a href="/Home/Show_Details" src="@Url.Action("/Home/Show_Details")">List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

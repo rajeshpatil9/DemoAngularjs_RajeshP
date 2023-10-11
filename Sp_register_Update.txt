@@ -1,0 +1,30 @@
+USE [DemoDB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Sp_register_Update]    Script Date: 11/10/2023 12:46:22 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[Sp_register_Update]
+(
+@Id int ,
+@Name nvarchar(200),
+
+@Email nvarchar(200),
+
+@exp Integer)
+
+
+as
+
+begin
+
+update Records set Name=@Name, Email=@Email,Experience=@exp where Id =@Id
+
+end
+GO
+
+

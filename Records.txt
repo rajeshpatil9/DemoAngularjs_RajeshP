@@ -1,0 +1,19 @@
+USE [DemoDB]
+GO
+
+/****** Object:  Table [dbo].[Records]    Script Date: 11/10/2023 12:46:55 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Records](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NULL,
+	[Email] [varchar](50) NULL,
+	[Experience] [int] NULL
+) ON [PRIMARY]
+GO
+
+

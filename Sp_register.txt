@@ -1,0 +1,27 @@
+USE [DemoDB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Sp_register]    Script Date: 11/10/2023 12:36:24 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+Create proc [dbo].[Sp_register]
+
+   (@name    NVARCHAR (100) ,
+
+    @email NVARCHAR (MAX) ,
+
+
+    @exp  Integer)
+
+     as
+
+     begin
+
+     insert into Records (Name,Email,Experience) values(@Name,@Email,@exp)
+
+     end
+GO

@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/AngularController/HomeAngular.js"></script>
+</head>
+<body>
+    <div ng-app="HomeApp" ng-controller="HomeController">
+        <div class="container">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Experience</th>
+                </tr>
+                <tr data-ng-repeat="e in Regdata">
+                    <td>{{e.Id}}</td>
+                    <td>{{e.Name}}</td>
+                    <td>{{e.Email}}</td>
+                    <td>{{e.Experience}}</td>
+                    <td><a class="glyphicon glyphicon-pencil" href="/Home/Update_Details?id={{e.Id}}" ></a></td>
+                    @*<td><a class="glyphicon glyphicon-trash" ng-click="deleterecord(e.Id)" href="/Home/deleterecord?id={{e.Id}}" ></a></td>*@
+                    <td><a class="glyphicon glyphicon-trash" ng-click="deleterecord(e.Id)"  ></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
+

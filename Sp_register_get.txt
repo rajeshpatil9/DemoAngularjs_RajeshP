@@ -1,0 +1,22 @@
+USE [DemoDB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Sp_register_get]    Script Date: 11/10/2023 12:45:54 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+Create proc [dbo].[Sp_register_get]
+
+as
+
+begin
+
+Select * from Records
+
+End
+GO
+
+
