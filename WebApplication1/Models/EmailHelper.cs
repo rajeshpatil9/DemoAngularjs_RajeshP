@@ -22,7 +22,6 @@ namespace WebApplication1.Models
             client.UseDefaultCredentials = false;
             client.EnableSsl = true;
             client.Credentials = new System.Net.NetworkCredential("rajeshrajigarepatil@gmail.com", "zxvu fdmv fsiz jcih");
-            //client.Credentials = new System.Net.NetworkCredential("rajeshrajigarepatil@gmail.com", "RR*gv2020");
             client.Host = "smtp.gmail.com";
             client.Port = 587;
             try

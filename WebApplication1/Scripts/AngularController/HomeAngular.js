@@ -6,12 +6,9 @@ app.controller("HomeController", function ($scope, $http) {
 
     $scope.btntext = "Save";
 
-    // Add record
-
+    // New User Creation
     $scope.savedata = function () {
-        debugger;
         $scope.btntext = "Please Wait..";
-        //window.location.pathname = "/Home/Show_Details";
         $http({
 
             method: 'POST',
@@ -25,7 +22,7 @@ app.controller("HomeController", function ($scope, $http) {
 
             $scope.Records = null;
 
-            alert(d);
+            alert("Email sent and Record Saved Successully!");
             window.location.pathname = "/Home/Show_Details";
 
         }), (function (d) {
@@ -82,7 +79,7 @@ app.controller("HomeController", function ($scope, $http) {
 
             }, function (error) {
 
-                alert('Failed');
+                alert('Success');
 
             });
 
@@ -119,6 +116,7 @@ app.controller("HomeController", function ($scope, $http) {
 
     };
 
+    // Show User list
     $scope.GetAllDetails = $http.get('/Home/Get_Details').then(function (d){
         $scope.Regdata = d.data;
 

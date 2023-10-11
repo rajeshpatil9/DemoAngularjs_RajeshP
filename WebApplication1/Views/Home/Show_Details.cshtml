@@ -1,32 +1,45 @@
 ﻿<html>
 <head>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/AngularController/HomeAngular.js"></script>
+    <link href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <div ng-app="HomeApp" ng-controller="HomeController">
         <div class="container">
-            <table class="table table-bordered">
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Experience</th>
-                </tr>
-                <tr data-ng-repeat="e in Regdata">
-                    <td>{{e.Id}}</td>
-                    <td>{{e.Name}}</td>
-                    <td>{{e.Email}}</td>
-                    <td>{{e.Experience}}</td>
-                    <td><a class="glyphicon glyphicon-pencil" href="/Home/Update_Details?id={{e.Id}}" ></a></td>
-                    @*<td><a class="glyphicon glyphicon-trash" ng-click="deleterecord(e.Id)" href="/Home/deleterecord?id={{e.Id}}" ></a></td>*@
-                    <td><a class="glyphicon glyphicon-trash" ng-click="deleterecord(e.Id)"  ></a></td>
-                </tr>
+            <br />
+            <table id="userDetails" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Experience</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="e in Regdata">
+                        <td>{{e.Id}}</td>
+                        <td>{{e.Name}}</td>
+                        <td>{{e.Email}}</td>
+                        <td>{{e.Experience}}</td>
+                        <td><a class="glyphicon glyphicon-pencil" href="/Home/Update_Details?id={{e.Id}}"></a></td>
+                        <td><a class="glyphicon glyphicon-trash" ng-click="deleterecord(e.Id)"></a></td>
+                    </tr>
+                </tbody>
+
             </table>
         </div>
     </div>
-
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        new DataTable('#userDetails');
+    </script>
 </body>
 </html>
 

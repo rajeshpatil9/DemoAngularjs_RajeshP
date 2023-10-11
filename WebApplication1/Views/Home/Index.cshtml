@@ -19,38 +19,77 @@
             xhr.send();
         }
     </script>
+    <style>
+        .back {
+            background: #e2e2e2;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+
+        .div-center {
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            max-width: 100%;
+            max-height: 100%;
+            overflow: auto;
+            padding: 1em 2em;
+            border-bottom: 2px solid #ccc;
+            display: table;
+        }
+
+        div.content {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
-    <div ng-app="HomeApp" ng-controller="HomeController">
-        <div class="container">
-            <div class="row">
-                <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" ng-model="Records.Name" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Email:</label>
-                    <input type="text" ng-model="Records.Email" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Experience:</label>
-                    <input type="text" ng-model="Records.Experience" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Captcha:</label>
-                    <input type="text" ng-model="Records.CaptchaText" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <img id="img" src="@Url.Action("GenerateCaptcha")" class="captchaCL" />
-                    <button type="button" onclick="refreshCaptcha();" class="refresh-btn"><i class="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
-                </div>
-                <div class="form-group">
-                    <input type="button" ng-click="savedata()" class="btn btn-primary" value="{{btntext}}" />
-                    <a href="/Home/Show_Details" src="@Url.Action("/Home/Show_Details")">List</a>
-                </div>
+    <div class="back">
+        <div class="div-center">
+            <div class="content">
+                <form ng-app="HomeApp" ng-controller="HomeController" name="myForm" ng-submit="myForm.$valid" novalidate>
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" ng-model="Records.Name" name="name" class="form-control" required />
+                        <span class="error text-danger text-danger" ng-show="myForm.name.$dirty && myForm.name.$error.required">*Name Required</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" name="Email" ng-model="Records.Email" class="form-control" required />
+                        <span class="error text-danger" ng-show="myForm.Email.$dirty && myForm.Email.$error.required">*Email Required</span>
+                        <span class="error text-danger" ng-show="!myForm.Email.$error.required && myForm.Email.$invalid">*Invalid Email Address</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Experience:</label>
+                        <input type="number" name="Experience" ng-model="Records.Experience" class="form-control" required />
+                        <span class="error text-danger" ng-show="myForm.Experience.$dirty && myForm.Experience.$error.required">*Experience Required</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Captcha:</label>
+                        <input type="text" name="Captcha" ng-model="Records.CaptchaText" class="form-control" required />
+                        <span class="error text-danger" ng-show="myForm.Captcha.$dirty && myForm.Captcha.$error.required">*Captcha Required</span>
+                    </div>
+                    <div class="form-group">
+                        <img id="img" src="@Url.Action("GenerateCaptcha")" class="captchaCL" />
+                        <button type="button" onclick="refreshCaptcha();" class="refresh-btn"><i class="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" ng-click="savedata()" class="btn btn-primary" ng-disabled="myForm.$invalid" />
+                        <a class="btn btn-warning" href="/Home/Show_Details" src="@Url.Action("/Home/Show_Details")">Back to List</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    
+
 </body>
 </html>

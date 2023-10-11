@@ -32,6 +32,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        // to show User Details
         public JsonResult Get_Details()
         {
 
@@ -59,6 +60,7 @@ namespace WebApplication1.Controllers
             
         }
 
+        //To create new User
         public JsonResult Add_Record(Records rs)
         {
             string captchaText = rs.CaptchaText;
@@ -73,7 +75,7 @@ namespace WebApplication1.Controllers
                 {
                     DtObj.Add_details(rs);
                     EmailHelper emailHelper = new EmailHelper();
-                    bool emailResponse = emailHelper.SendEmail(rs.Email, "Registered Successfully");
+                    bool emailResponse = emailHelper.SendEmail(rs.Email, rs.Name+ " Registered Successfully");
                     r = "Inserted";
                 }
                    
@@ -90,10 +92,13 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        //Update current user
         public ActionResult Update_Details()
         {
             return View();
         }
+
+        // Delete record by Id
         public JsonResult delete_record(int id)
 
         {
@@ -185,6 +190,8 @@ namespace WebApplication1.Controllers
 
         }
 
+        // Generating Captcha
+
         [HttpGet]
         public ActionResult GenerateCaptcha()
         {
@@ -195,7 +202,7 @@ namespace WebApplication1.Controllers
             return File(byteArray, "image/gif");
         }
 
-
+        //Regenerating Captcha
         [HttpGet]
         public ActionResult ReGenerateCaptcha()
         {
